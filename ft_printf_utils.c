@@ -62,13 +62,13 @@ int	print_hex(unsigned int nb, int s)
 	if (nb < 16)
 	{
 		if (nb < 10)
-			len += print_char(nb + 48);
+			len += print_char(nb + '0');
 		else
 		{
 			if (s == 1)
-				len += print_char(nb + 87);
+				len += print_char((nb - 10) + 'a');
 			else
-				len += print_char(nb + 55);
+				len += print_char((nb - 10) + 'A');
 		}
 	}
 	return (len);
