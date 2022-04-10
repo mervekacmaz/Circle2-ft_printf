@@ -32,28 +32,28 @@ int	print_str(char	*str)
 	return (len);
 }
 
-int	ft_check(char c, va_list *safe)
+int	ft_check(char c, va_list safe)
 {
 	int	len;
 
 	len = 0;
 	if (c == 'c')
-		len += print_char(va_arg(*safe, int));
+		len += print_char(va_arg(safe, int));
 	if (c == 'd' || c == 'i')
-		len += print_nbr(va_arg(*safe, int));
+		len += print_nbr(va_arg(safe, int));
 	if (c == 's')
-		len += print_str(va_arg(*safe, char *));
+		len += print_str(va_arg(safe, char *));
 	if (c == 'p')
 	{
 		len += write(1, "0x", 2);
-		len += print_ptr(va_arg(*safe, unsigned long int));
+		len += print_ptr(va_arg(safe, unsigned long int));
 	}
 	if (c == 'u')
-		len += print_unsigned_integer(va_arg(*safe, unsigned int));
+		len += print_unsigned_integer(va_arg(safe, unsigned int));
 	if (c == 'x')
-		len += print_hex(va_arg(*safe, unsigned int), 1);
+		len += print_hex(va_arg(safe, unsigned int), 1);
 	if (c == 'X')
-		len += print_hex(va_arg(*safe, unsigned int), 2);
+		len += print_hex(va_arg(safe, unsigned int), 2);
 	if (c == '%')
 		len += print_char('%');
 	return (len);
@@ -74,7 +74,7 @@ int	ft_printf(const char *s, ...)
 			len += write(1, &s[i], 1);
 		if (s[i] == '%')
 		{
-			len += ft_check(s[i + 1], &safe);
+			len += ft_check(s[i + 1], safe);
 			i++;
 		}
 		i++;

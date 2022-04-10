@@ -18,7 +18,7 @@
 
 int	ft_printf(const char *s, ...);
 int	print_char(char c);
-int	ft_check(char c, va_list *safe);
+int	ft_check(char c, va_list safe);
 int	print_nbr(int nb);
 int	print_str(char	*str);
 int	print_ptr(unsigned long int n);
